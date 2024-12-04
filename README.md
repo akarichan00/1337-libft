@@ -38,3 +38,18 @@ The libft project is a custom C library that provides a collection of useful fun
 # Tester
   To test your Libft -> use this tester : https://github.com/xicodomingues/francinette
 
+# Notes
+## Why Use Double Pointers in Linked Lists?
+ - In C, everything, including pointers, is passed by value. This means that if you pass a pointer to a function, you are passing a copy of the pointer, not the original. To modify the pointer itself (e.g., add a new element to the front of a list), you need to pass a pointer to the pointer, i.e., a double pointer.
+ - Here’s how double pointers work in the context of a linked list:
+     ```bash
+       void ft_lstadd_front(t_list **lst, t_list *new)
+      {
+        if (lst && new)
+        {
+            new->next = *lst;
+            *lst = new;
+        }
+      }
+       ```
+  - In the ft_lstadd_front function, we modify the original pointer to point to the new element by using a double pointer.
